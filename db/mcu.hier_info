@@ -1,0 +1,147 @@
+|mcu
+CLK => ~NO_FANOUT~
+HEX0[0] <= Binary_To_7Segment:seg0.o_Segment_G
+HEX0[1] <= Binary_To_7Segment:seg0.o_Segment_F
+HEX0[2] <= Binary_To_7Segment:seg0.o_Segment_E
+HEX0[3] <= Binary_To_7Segment:seg0.o_Segment_D
+HEX0[4] <= Binary_To_7Segment:seg0.o_Segment_C
+HEX0[5] <= Binary_To_7Segment:seg0.o_Segment_B
+HEX0[6] <= Binary_To_7Segment:seg0.o_Segment_A
+HEX1[0] <= <VCC>
+HEX1[1] <= <VCC>
+HEX1[2] <= <VCC>
+HEX1[3] <= <VCC>
+HEX1[4] <= <VCC>
+HEX1[5] <= <VCC>
+HEX1[6] <= <VCC>
+HEX2[0] <= Binary_To_7Segment:seg2.o_Segment_G
+HEX2[1] <= Binary_To_7Segment:seg2.o_Segment_F
+HEX2[2] <= Binary_To_7Segment:seg2.o_Segment_E
+HEX2[3] <= Binary_To_7Segment:seg2.o_Segment_D
+HEX2[4] <= Binary_To_7Segment:seg2.o_Segment_C
+HEX2[5] <= Binary_To_7Segment:seg2.o_Segment_B
+HEX2[6] <= Binary_To_7Segment:seg2.o_Segment_A
+HEX3[0] <= Binary_To_7Segment:seg3.o_Segment_G
+HEX3[1] <= Binary_To_7Segment:seg3.o_Segment_F
+HEX3[2] <= Binary_To_7Segment:seg3.o_Segment_E
+HEX3[3] <= Binary_To_7Segment:seg3.o_Segment_D
+HEX3[4] <= Binary_To_7Segment:seg3.o_Segment_C
+HEX3[5] <= Binary_To_7Segment:seg3.o_Segment_B
+HEX3[6] <= Binary_To_7Segment:seg3.o_Segment_A
+LED[0] <= SW[0].DB_MAX_OUTPUT_PORT_TYPE
+LED[1] <= SW[1].DB_MAX_OUTPUT_PORT_TYPE
+LED[2] <= SW[2].DB_MAX_OUTPUT_PORT_TYPE
+LED[3] <= SW[3].DB_MAX_OUTPUT_PORT_TYPE
+LED[4] <= SW[4].DB_MAX_OUTPUT_PORT_TYPE
+LED[5] <= SW[5].DB_MAX_OUTPUT_PORT_TYPE
+LED[6] <= SW[6].DB_MAX_OUTPUT_PORT_TYPE
+LED[7] <= SW[7].DB_MAX_OUTPUT_PORT_TYPE
+LED[8] <= bits_adder_sub:ads.C
+LED[9] <= bits_adder_sub:ads.V
+SW[0] => SW[0].IN2
+SW[1] => SW[1].IN2
+SW[2] => SW[2].IN2
+SW[3] => SW[3].IN2
+SW[4] => SW[4].IN2
+SW[5] => SW[5].IN2
+SW[6] => SW[6].IN2
+SW[7] => SW[7].IN2
+SW[8] => SW[8].IN1
+SW[9] => ~NO_FANOUT~
+BTN[0] => ~NO_FANOUT~
+BTN[1] => ~NO_FANOUT~
+BTN[2] => ~NO_FANOUT~
+
+
+|mcu|bits_adder_sub:ads
+A[0] => Add0.IN4
+A[0] => ct.IN1
+A[0] => ct.IN1
+A[1] => Add0.IN3
+A[1] => ct.IN1
+A[1] => ct.IN1
+A[2] => Add0.IN2
+A[2] => ct.IN1
+A[2] => ct.IN1
+A[3] => Add0.IN1
+B[0] => Bxor[0].IN0
+B[1] => Bxor[1].IN0
+B[2] => Bxor[2].IN0
+B[3] => Bxor[3].IN0
+m => Bxor[0].IN1
+m => Bxor[1].IN1
+m => Bxor[2].IN1
+m => Bxor[3].IN1
+m => Add1.IN10
+m => ct.IN1
+S[0] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+S[1] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+S[2] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+S[3] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+C <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+V <= V.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mcu|Binary_To_7Segment:seg0
+i_Binary_Num[0] => i_Binary[0].DATAA
+i_Binary_Num[0] => Add0.IN8
+i_Binary_Num[1] => i_Binary[1].DATAA
+i_Binary_Num[1] => Add0.IN7
+i_Binary_Num[2] => i_Binary[2].DATAA
+i_Binary_Num[2] => Add0.IN6
+i_Binary_Num[3] => i_Binary[3].OUTPUTSELECT
+i_Binary_Num[3] => i_Binary[2].OUTPUTSELECT
+i_Binary_Num[3] => i_Binary[1].OUTPUTSELECT
+i_Binary_Num[3] => i_Binary[0].OUTPUTSELECT
+i_Binary_Num[3] => Add0.IN5
+o_Segment_A <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_B <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_C <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_D <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_E <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_F <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_G <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mcu|Binary_To_7Segment:seg2
+i_Binary_Num[0] => i_Binary[0].DATAA
+i_Binary_Num[0] => Add0.IN8
+i_Binary_Num[1] => i_Binary[1].DATAA
+i_Binary_Num[1] => Add0.IN7
+i_Binary_Num[2] => i_Binary[2].DATAA
+i_Binary_Num[2] => Add0.IN6
+i_Binary_Num[3] => i_Binary[3].OUTPUTSELECT
+i_Binary_Num[3] => i_Binary[2].OUTPUTSELECT
+i_Binary_Num[3] => i_Binary[1].OUTPUTSELECT
+i_Binary_Num[3] => i_Binary[0].OUTPUTSELECT
+i_Binary_Num[3] => Add0.IN5
+o_Segment_A <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_B <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_C <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_D <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_E <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_F <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_G <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|mcu|Binary_To_7Segment:seg3
+i_Binary_Num[0] => i_Binary[0].DATAA
+i_Binary_Num[0] => Add0.IN8
+i_Binary_Num[1] => i_Binary[1].DATAA
+i_Binary_Num[1] => Add0.IN7
+i_Binary_Num[2] => i_Binary[2].DATAA
+i_Binary_Num[2] => Add0.IN6
+i_Binary_Num[3] => i_Binary[3].OUTPUTSELECT
+i_Binary_Num[3] => i_Binary[2].OUTPUTSELECT
+i_Binary_Num[3] => i_Binary[1].OUTPUTSELECT
+i_Binary_Num[3] => i_Binary[0].OUTPUTSELECT
+i_Binary_Num[3] => Add0.IN5
+o_Segment_A <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_B <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_C <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_D <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_E <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_F <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+o_Segment_G <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
